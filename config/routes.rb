@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   get "pages/home"
   get "pages/audit"
   devise_for :users
