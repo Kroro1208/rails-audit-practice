@@ -29,6 +29,10 @@ rails db:drop db:create db:migrate
 # 監査（データの変更履歴を記録する）機能を追加するgem
 bundle add audited
 
+# auditedの監査テーブルを作成する際に、変更内容を保存するカラムのタイプをjsonb（PostgreSQL用のJSON型）に指定して生成
+rails g audited:install --audited-changes-column-type jsonb
+rails db:migrate
+
 ```
 
 ## rails c で実行
@@ -52,4 +56,13 @@ user.role = 1
 user.save
 user.admin? # 管理者かどうか
 user.admin! # 管理者に設定
+
+user = User.first
+user.update!(email: "naoya@yahoo.co.jp")
+
+# ユーザーの全監査記録を取得
+user.audits
+
+# 最新の監査記録の変更内容を取得
+user.audits.last.audited_changes
 ```
