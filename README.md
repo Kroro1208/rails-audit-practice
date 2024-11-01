@@ -23,4 +23,30 @@ rails g controller pages home audit
 # body:text - 本文（テキスト型）
 # user:references - ユーザーとの関連付け（外部キー）
 rails g scaffold post title body:text user:references
+
+#
+rails db:drop db:create db:migrate
+```
+
+## rails c で実行
+```ruby
+rubyCopy# Rails consoleを起動
+rails c
+
+# 1. 失敗するユーザー作成の試み
+User.create
+# => 失敗（emailとpasswordが必須なため）
+
+# 2. 成功するユーザー作成
+User.create(
+  email: "test@example.com",
+  password: "password",
+  password_confirmation: "password"
+)
+
+user = User.first
+user.role = 1
+user.save
+user.admin? # 管理者かどうか
+user.admin! # 管理者に設定
 ```
