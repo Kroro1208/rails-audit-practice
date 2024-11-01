@@ -24,8 +24,11 @@ rails g controller pages home audit
 # user:references - ユーザーとの関連付け（外部キー）
 rails g scaffold post title body:text user:references
 
-#
 rails db:drop db:create db:migrate
+
+# 監査（データの変更履歴を記録する）機能を追加するgem
+bundle add audited
+
 ```
 
 ## rails c で実行
