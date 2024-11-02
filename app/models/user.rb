@@ -10,4 +10,6 @@ class User < ApplicationRecord
 
   enum role: { user: 0, admin: 1 }
   has_many :posts, dependent: :destroy
+
+  validates :email, presence: true, uniqueness: true
 end
