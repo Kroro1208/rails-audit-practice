@@ -1,2 +1,15 @@
-<h1>Pages#audit</h1>
-<p>Find me in app/views/pages/audit.html.erb</p>
+<h1>User Audit Page</h1>
+<hr/>
+
+<% @user_audits.each do |audit| %>
+  <div>
+    <h2>
+      <%= audit.action %> by 
+      <%= audit.user&.email %> at 
+      <%= audit.created_at %>
+    </h2>
+    <ul>
+      <%= audit.audited_changes %>
+    </ul>
+  </div>
+<% end %>
