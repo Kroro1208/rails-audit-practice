@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 before_action :authenticate_user!, only: %i[ audit ]
 
   def home
+    @posts = Post.all
   end
 
   def audit
