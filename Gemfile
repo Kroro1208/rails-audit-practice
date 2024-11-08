@@ -58,4 +58,4 @@ end
 
 gem "devise", "~> 4.9"
 
-gem "audited", "~> 5.7"
+gem "audited", "~> 5.8"
